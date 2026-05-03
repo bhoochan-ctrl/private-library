@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我从达尔文那里学到的投资知识 - 吃书笔记</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fbf9f2; --bg-soft: #f3efe4; --surface: #fdfcf8; --surface-2: #f5f2e8;
+  --border: rgba(92,83,68,.12); --border-strong: rgba(92,83,68,.24);
+  --text-1: #1c1814; --text-2: #5c5344; --text-3: #8a7e6c;
+  --accent: #b4513a; --accent-2: #2c5f7c; --good: #3a6b45; --warn: #a67c2e; --bad: #b8403a;
+  --font-serif: 'Noto Serif SC', 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  --font-size: 17px; --line-height: 1.85; --max-width: 680px; --para-spacing: 1.2em;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: var(--font-size); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+body { font-family: var(--font-serif); line-height: var(--line-height); color: var(--text-1); background: var(--bg); max-width: var(--max-width); margin: 0 auto; padding: 80px 24px 120px; }
+h1 { font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin: 2em 0 .6em; color: var(--text-1); letter-spacing: .02em; }
+h2 { font-size: 1.6rem; font-weight: 600; line-height: 1.4; margin: 2.5em 0 .5em; color: var(--text-1); }
+h3 { font-size: 1.25rem; font-weight: 600; line-height: 1.4; margin: 2em 0 .4em; color: var(--text-1); }
+h4 { font-size: 1.05rem; font-weight: 600; line-height: 1.5; margin: 1.5em 0 .3em; color: var(--text-2); }
+p { margin-bottom: var(--para-spacing); } p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; color: var(--text-1); } em { font-style: italic; }
+a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; } a:hover { color: var(--accent); }
+.hero { text-align: center; padding: 60px 0 50px; margin-bottom: 48px; border-bottom: 1px solid var(--border); }
+.hero .book-title { font-size: 2.6rem; font-weight: 700; line-height: 1.25; letter-spacing: .03em; color: var(--text-1); margin-bottom: .4em; }
+.hero .book-subtitle { font-size: 1.15rem; color: var(--text-2); font-weight: 400; margin-bottom: 1.2em; line-height: 1.5; }
+.hero .meta { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; font-size: .9rem; color: var(--text-3); font-family: var(--font-sans); }
+blockquote { margin: 1.5em 0; padding: 16px 20px 16px 24px; border-left: 4px solid var(--accent); background: #f7f2e6; border-radius: 0 6px 6px 0; color: var(--text-2); font-style: italic; }
+blockquote p { margin-bottom: .5em; }
+code { font-family: var(--font-mono); font-size: .88em; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--text-1); }
+pre { margin: 1.5em 0; padding: 20px 24px; background: var(--surface-2); border-radius: 6px; overflow-x: auto; font-family: var(--font-mono); font-size: .85em; line-height: 1.6; color: var(--text-1); border: 1px solid var(--border); }
+pre code { background: none; padding: 0; border-radius: 0; }
+ul, ol { margin: 1em 0 1em 1.5em; } li { margin-bottom: .4em; } ul li::marker { color: var(--accent); }
+hr { border: none; border-top: 1px solid var(--border); width: 120px; margin: 3em 0; }
+table { width: 100%; border-collapse: collapse; margin: 1.5em 0; font-size: .95em; }
+thead { border-bottom: 2px solid var(--border-strong); }
+th { text-align: left; padding: 10px 14px; font-weight: 600; color: var(--text-2); font-family: var(--font-sans); font-size: .9em; letter-spacing: .03em; text-transform: uppercase; }
+td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; } tr:last-child td { border-bottom: none; }
+.figure { margin: 2em 0; text-align: center; } .figure svg { max-width: 100%; height: auto; }
+.figure .figcaption { margin-top: .6em; font-size: .85em; color: var(--text-3); font-family: var(--font-sans); }
+.callout { background: var(--bg-soft); border-left: 4px solid var(--accent); padding: 16px 20px; margin: 1.5em 0; border-radius: 0 8px 8px 0; }
+.callout.g { border-left-color: var(--good); } .callout.w { border-left-color: var(--warn); }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 1.5em 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px; } .card h4 { margin-top: 0; color: var(--accent-2); }
+.critique-section { margin: 2em 0; padding: 28px 32px; background: var(--surface); border: 1px solid var(--border-strong); border-radius: 8px; }
+.critique-section h3 { margin-top: 0; color: var(--accent); } .critique-section p { color: var(--text-2); }
+footer { margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--border); text-align: center; font-size: .85em; color: var(--text-3); font-family: var(--font-sans); }
+footer p { margin-bottom: .3em; } footer .disclaimer { font-style: italic; color: var(--text-3); }
+@media (max-width: 720px) { body { padding: 40px 20px 80px; font-size: 16px; } .hero { padding: 40px 0 32px; } .hero .book-title { font-size: 2rem; } h1 { font-size: 1.8rem; } h2 { font-size: 1.4rem; } .grid { grid-template-columns: 1fr; } }
+@media print { body { background: #fff; color: #000; max-width: 100%; padding: 0; font-size: 12pt; } .hero { border-bottom-color: #ccc; } }
+::selection { background: rgba(180,81,58,.15); color: var(--text-1); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="book-title">我从达尔文那里学到的投资知识</div>
+  <div class="book-subtitle">What I Learned About Investing from Darwin</div>
+  <div class="meta">
+    <span>Pulak Prasad</span>
+    <span>Nalanda Capital</span>
+    <span>2023</span>
+  </div>
+</div>
+
+<p>这本书是Pulak Prasad将进化生物学思想系统应用于投资实践的完整记录。Prasad是Nalanda Capital的创始人，管理50亿美元的印度上市证券组合。从2007年到2022年，1卢比的投资价值13.8卢比，年化回报率20.3%（扣除费用后），跑赢印度Sensex指数10.9个百分点。但不要被业绩数字吸引——这本书的核心不是"怎么赚钱"，而是<strong>一套极简主义投资哲学的推导过程</strong>。</p>
+
+<p>Prasad在哥伦比亚大学攻读MBA期间读了罗伯特·特里弗斯的《自私的基因》——不是投资书，而是一本进化心理学著作。他被一个问题迷住了：如果自然选择优化了适应性，为什么生物体不做"完美的决定"？为什么自然界到处是"过于谨慎"和"浪费"的现象？这个问题的答案改变了他的整个投资框架。</p>
+
+<p>Prasad在书中用了一个开场的个人故事来锚定全书的基调。在Warburg Pincus做私募期间，他主导了一笔5000万美元的投资——"漂亮的管理层、完整的外部尽职调查、合理的行业前景……看起来一切都很完美。"投资后创始人被发现通过关联交易掏空公司，投资归零。最致命的教训不是创始人欺诈——欺诈永远无法完全避免——而是他忽略了内部团队中一个分析师的"非正式担忧"：那不是一份写了80页的报告，只是一句"我觉得这个人的风格有点怪"。Prasad从此形成了双重尽职调查的规则。他在这本书里的每一章都会回到"忽视微弱信号"这件事上——因为从进化生物学的视角看，自然界中"微弱信号"往往是最重要的生存信号。</p>
+
+<p>本书的三步框架极简到令人不安：<strong>避免大风险 → 以公平价格购买高质量企业 → 买了就别卖</strong>。让人不舒服的是，这个框架的知识密度远高于任何复杂的投资模型。Prasad在每一章都用进化生物学中的一个具体事例来支撑一个投资原则——这不是用类比来"装饰"投资观点，而是用演化论的逻辑结构来<strong>推导</strong>投资策略。这是他这本书区别于所有其他投资书的核心特征。</p>
+
+<p>顺便说一句，Nalanda是印度一所古代佛教大学的名字，意思是"知识的给予者"。Prasad选择这个名字不是偶然——暗示了他的投资哲学中"耐心"和"知识驱动"两个维度。</p>
+
+<div class="callout g"><strong>Nalanda三步投资法：</strong><br>1. <strong>避免大风险</strong> —— 不要亏钱。这是整个方法的基石。<br>2. <strong>以公平价格购买高质量企业</strong> —— ROCE是唯一的初筛工具。<br>3. <strong>不要懒惰——要非常懒惰</strong> —— 买了就别卖，多年不交易是最好的交易。</div>
+
+<hr>
+
+<h2>一、核心命题：自然选择告诉投资者什么？</h2>
+
+<p>Prasad在第一章开篇就抛出了一个反直觉的类比：<strong>进化不是关于优化——它关于生存</strong>。自然选择的终极检验标准不是你长得多大、跑得多快、有多聪明——而是你能不能活到繁殖年龄。同样，投资的终极检验标准不是你抓住了多少十倍股——而是你的资本能不能长期存活。</p>
+
+<p>这个简单的洞察产生了深远的结果：</p>
+
+<ul>
+  <li>自然选择不奖励"在最坏的情况发生之前退出的能力"——它奖励"在最坏的情况下仍然存活的能力"。</li>
+  <li>自然选择不惩罚小概率的正面事件（错过了一个大机会）——但严厉惩罚小概率的负面事件（做了一个致命的错误决策）。</li>
+  <li>自然选择的适应性是<strong>分布性的</strong>——它不看单次试验的结果，而看整个种群在长期的表现。</li>
+</ul>
+
+<blockquote>
+<p>投资界的核心困境：我们告诉自己"不要亏钱"，但市场结构奖励那些"敢于冒险的人"（在短期）。进化生物学的压倒性证据表明：在不确定性中，生存策略远比冒险策略更有效——尽管看起来更乏味。</p>
+</blockquote>
+
+<hr>
+
+<h2>二、框架解析：进化论的六项投资启示</h2>
+
+<h3>论点一：I类错误 vs II类错误——自然界压倒性地选择谨慎</h3>
+
+<p>Prasad在Warburg Pincus期间主导了一笔5,000万美元的投资——漂亮的管理层、完整的尽职调查、合理的行业前景。创始人后来被发现把公司掏空了，投资归了零。致命教训：他忽略了内部团队听到的关于创始人的"非正式负面嗡嗡声"。从此Prasad要求Nalanda在投资前做到：聘请外部法务调查 + 内部独立平行调查。<strong>两者都通过，才能进入下一步。</strong></p>
+
+<p>他将投资错误分为两类：<strong>第一类错误</strong>是做了不该做的投资（委托错误）；<strong>第二类错误</strong>是没做该做的投资（遗漏错误）。二者的风险是内在负相关的——减少一种必然增加另一种。问题变成了：你更愿意容忍哪种错误？</p>
+
+<p>Prasad用三个生物证据层级证明自然选择的答案压倒性地偏向最小化第一类错误：</p>
+
+<p><strong>鹿的视角。</strong>靠近水坑时判断错误=死亡（I类），远离安全的水坑=口渴（II类）。鹿的进化选择是在没有危险的地方也看到危险——宁可渴死，不被吃掉。雄鹿打架前的仪式化威慑行为让实际战斗极为罕见——约5%的雄鹿会受永久伤害。输掉一场战斗的代价是死亡或严重的生殖失败。一场战斗的收益最多是暂时的优势地位。收益远小于风险。</p>
+
+<p><strong>猎豹的视角。</strong>猎豹永远不会尝试击杀成年水牛——尽管回报巨大（吃一个月），受伤的风险太高（致命的踢伤或角伤）。只追逐小型的、安全的猎物——鸟、兔、小羚羊。错过一顿大餐（II类错误）远好于受伤致死（I类错误）。</p>
+
+<p><strong>植物的视角。</strong>遭受昆虫攻击后，植物将资源从生长转向防御——叶面毛状体密度增加可达1,000%，甚至释放化学信号吸引害虫的天敌。每一种防御机制都牺牲了生长（机会成本）换来了存活。植物宁可不长也不被杀。</p>
+
+<p>Prasad计算了一个数学后果：即使你有80%的正确决策率，选中好投资的概率只有57%。如果你把I类错误率从20%降至10%（提高谨慎度），你的成功率从57%跃升至73%。如果把II类错误同样降低10个百分点，成功率只到60%。<strong>减少I类错误的投入产出比是减少II类错误的5倍以上。</strong></p>
+
+<div class="callout g"><strong>巴菲特的注脚</strong>：投资界最伟大的是拒绝者。巴菲特最好的技能不是发现好公司，而是对几乎所有机会说"不"。</div>
+
+<p>基于这个框架，Prasad列出了Nalanda系统回避的六类风险：</p>
+
+<table>
+<thead><tr><th>回避类型</th><th>逻辑</th><th>具体表现</th></tr></thead>
+<tbody>
+<tr><td><strong>不诚信的创始人</strong></td><td>人不会变。永远不投资道德有问题的人。</td><td>双重尽职调查（外部+内部独立）。回避印度基建和房地产（现金交易多、治理差）。</td></tr>
+<tr><td><strong>扭亏为盈</strong></td><td>无法预测结果。IBM郭士纳成功不可复制。</td><td>JCPenney请"零售之神"Ron Johnson最终破产。不赌转机。</td></tr>
+<tr><td><strong>高杠杆</strong></td><td>债务降低战略灵活性。</td><td>Nalanda组合90%+零债务。COVID期间破产全是高杠杆公司。</td></tr>
+<tr><td><strong>并购成瘾</strong></td><td>70-90%并购失败。最大成本是机会成本。</td><td>拜耳630亿收购孟山都→价值从1,400亿欧跌至500亿欧。</td></tr>
+<tr><td><strong>快速变化行业</strong></td><td>"冰球会去哪？我没那么聪明，所以不玩。"</td><td>回避铁路狂热、网络泡沫、印度基建热潮。</td></tr>
+<tr><td><strong>不结盟的所有者</strong></td><td>结构性利益冲突不可消除。</td><td>国企、全球子公司、集团企业。国企贷款减免政策损害股东。</td></tr>
+</tbody>
+</table>
+
+<h3>论点二：银狐实验——单一选择器的魔力</h3>
+
+<p>1959年，德米特里·别利亚耶夫和柳德米拉·特鲁特在新西伯利亚启动了一个注定载入史册的实验。他们只选择<strong>一个特征</strong>来育种银狐——<strong>驯服</strong>。到第四代（1963年），一只叫Ember的公狐对着Trut摇尾巴——没有野生狐会这样做。到第20代，35%的幼崽像狗一样寻求人类关注。到第35代，超过70%。</p>
+
+<p>更令人震惊的是：仅仅选择驯服这一<strong>行为特征</strong>，一系列<strong>身体特征</strong>自动涌现——花斑皮毛、卷曲尾巴、松软耳朵、缩短的吻部（婴儿脸）。Trut甚至观察到一只狐狸像看门狗一样保护她。原因：选择驯服→改变了一组基因的表达→影响了神经递质的释放量→这些激素变化同时触发了行为和生理变化。<strong>买一，送多。</strong></p>
+
+<p>Prasad的映射：在投资中，ROCE（已动用资本回报率）就是你的"驯服"。他逐一驳斥了常见的筛选标准：</p>
+<ul>
+  <li><strong>优秀管理团队</strong>——无法衡量。安然的管理层也非常能说。</li>
+  <li><strong>高增长行业</strong>——90%+的互联网公司死了。</li>
+  <li><strong>利润率</strong>——Costco利润率3%但比Tiffany的19%更好（库存周转天的差异）。</li>
+</ul>
+
+<p>Nalanda的答案：只看<strong>历史ROCE≥20%</strong>，且持续5-10年以上。注意"历史"——不看未来会改善的故事，只看过去的数据。Nalanda持仓组合的ROCE中位数约42%。</p>
+
+<div class="callout"><strong>ROCE公式</strong>：EBIT ÷ (净营运资本 + 净固定资产)<br>只看历史，不看未来。持续20%+的ROCE说明企业有某种护城河。</div>
+
+<div class="grid">
+<div class="card"><h4>优秀管理层</h4><p>持续高ROCE说明管理层做对了事。比面试印象可靠万倍。</p></div>
+<div class="card"><h4>可持续竞争优势</h4><p>经济学说超额收益终被抹平。能长期高ROCE，必有护城河。</p></div>
+<div class="card"><h4>资本配置能力</h4><p>企业最大的能力就是分配资本。高ROCE证明系统良好。</p></div>
+<div class="card"><h4>犯错缓冲</h4><p>高ROCE=高现金。犯错后仍能活下来并修复。</p></div>
+</div>
+
+<h3>论点三：三个海胆问题与DCF的致命问题</h3>
+
+<p>通过ROCE初筛后，Prasad要求团队回答三个"<strong>海胆问题</strong>"——以赛亚·伯林《刺猬与狐狸》中的刺猬原型：刺猬只知道一件大事。同样，一家优秀的公司一定有一个核心逻辑：</p>
+<ol>
+  <li>这家公司什么事情做得最好？</li>
+  <li>它的经济逻辑是什么？——利润从哪里来的？可持续吗？</li>
+  <li>哪些关键变量最重要？如果这些变量发生什么变化，业务会崩溃？</li>
+</ol>
+
+<p>Prasad同时揭示了DCF（现金流折现）的五个致命问题：<strong>终值占比过高</strong>——高质量企业70-80%价值来自终值，稍微改个假设就天翻地覆；<strong>折现率随意</strong>——从9%改成11%就能否决一切；<strong>增长率预测是猜</strong>——15-25年后的增长没人知道；<strong>"内在价值"虚假精确</strong>——计算机不会告诉你公司能不能活到预期；<strong>进化视角的缺失</strong>——与其预测未来现金流，不如判断公司的适应度。</p>
+
+<p>Nalanda的替代方案是<strong>情景矩阵</strong>：一切照常会怎样？严重衰退会怎样？技术颠覆会怎样？管理层犯错会怎样？然后回答：以当前价格，下行可控吗？上行值得等吗？</p>
+
+<h3>论点四：巴甫洛夫条件反射——进化给投资者的警钟</h3>
+
+<p>巴甫洛夫实验的经典场景：狗听到铃声分泌唾液。这不是"学习"——这是条件反射。Prasad指出，投资者每天都在经历同样的事。一个漂亮的管理层PPT、一段令人信服的增长叙事、一个"护城河很深"的断言——你的大脑把这些"铃声"与"好的投资机会"关联起来，然后你开始分泌决策冲动。</p>
+
+<p>但铃声<strong>本身不指向食物</strong>。漂亮地讲英语的管理层不必然带来好的经营决策。迷人的增长叙事不必然转化为实际利润。"护城河"这个词本身不创造护城河。Nalanda的解决方案极其简单：<strong>永远先看数据再看人，永远先提三个海胆问题再听管理层讲故事</strong>。这个顺序不是偏好——它是阻断条件反射回路的结构性安排。</p>
+
+<p>Prasad用了一个他亲历的案例来说明这一点：一家消费品公司，管理层让人"一见如故"，PPT做得很漂亮，行业也说得通。但数据上ROCE只有12%——低于Nalanda的20%门槛。按照"先数据后故事"的原则，这家公司在第一轮就被淘汰了。一年后它爆出会计丑闻。数据解读永远是"铃声"的解耦器。</p>
+
+<blockquote><p>如果一个人看起来像商人、说话像商人、走路像商人——在经济学里他可能真的是商人。但在投资里，这可能只是巴甫洛夫的一个铃声。</p></blockquote>
+
+<h3>论点五：多层健壮性——从DNA到企业的冗余设计</h3>
+
+<p>Prasad用一个完整的章节从分子层面解释生物为什么如此健壮。这不是题外话——这是他整个投资哲学最深层的科学地基。</p>
+
+<p><strong>DNA的冗余</strong>：64种密码子只编码20种氨基酸。第三个碱基的突变往往不改变氨基酸（同义突变）。翻译错误最可能发生在第三个位置——而这个位置恰好是最健壮的。这不是事后的巧合——它是自然选择数亿年筛选出的设计原则：<strong>关键功能必须有冗余保护</strong>。</p>
+
+<p><strong>蛋白质的宽容</strong>：大肠杆菌的β-内酰胺酶有263个氨基酸。科学家系统替换了每一个氨基酸，发现84%可以被替换而不改变功能。相当于一场100道题的考试错了84道还能拿A。这不是"不精确"，这是<strong>系统的天然抗脆性</strong>。</p>
+
+<p><strong>身体计划的弹性</strong>：两种海胆（T和E）在500万年前分化。T有浮游幼虫阶段（有助于扩散），E直接发育。但成年海胆看起来几乎一样。不同的发育路径、相同的最终功能——这是多层健壮性：在更高的组织层次上，冗余的存在形式是"备用路径"。</p>
+
+<p>木村资生的<strong>中性进化理论</strong>在这里具有了实践意义：大多数突变是中性的——不改变主要功能，但可以改变次要功能，成为未来创新的源泉。<strong>在健壮的系统中，进化是免费的。</strong>企业的类比：高ROCE+零债务的企业有充分的"中性空间"——它可以承受犯错、实验新业务，而不会让核心业务崩溃。</p>
+
+<div class="callout"><strong>WNS案例</strong>：2007年Nalanda跟踪一家BPO公司WNS。ROCE高、零债务——但前五大客户占收入55%（从2006年的41%攀升）。客户集中的健壮性缺陷明显。市场不在意，股价35美元。2007年下半年WNS失去一大客户，股价暴跌至13美元。Nalanda反手买入——判断随着公司壮大客户自然会分散。13年后前五大客户只占25%。健壮性信号从不骗人。</div>
+
+<p><strong>恐龙与哺乳动物的终极启示</strong>：恐龙统治地球1.8亿年——它们不可能不健壮。但6500万年前小行星撞击后恐龙灭绝了，而与它们共存了至少3000万年的松鼠大小的哺乳动物却幸存了下来。没有人知道确切原因。这个故事说明的是：<strong>即使高度健壮也不能保证永恒的适应</strong>。这就是为什么即使Nalanda做了所有正确的事，他们仍要求一个"安全边际"——以指数25-30%的折扣买入。因为他们知道自己不知道什么。</p>
+
+<h3>论点六：Nalanda的失败案例——健壮性也有边界</h3>
+
+<p>Prasad没有回避失败。他坦诚地讨论了两种失败模式：</p>
+
+<p><strong>第一种：企业失去健壮性。</strong>Nalanda曾投资一家消费品公司。买入时ROCE>50%、零债务、20%年增长。而后几年存货和应收账款开始飙升——利润表仍然好看，但现金开始消耗。最终Nalanda亏本退出。这是15年唯一一次此类惨败，但确实会发生。教训：<strong>健壮性是动态的</strong>。过去的高ROCE不保证未来的高ROCE。一年一次的检视频率足够来发现重大趋势位移，但不足以在"开始发生的时候就发现"。你可以说这是方法的弱点——也可以说是"非干涉主义"的必然代价。</p>
+
+<p><strong>第二种：过度健壮。</strong>有一家组合公司过于健壮，以至于不愿冒任何计算过的风险。十年间销售年增长不到5%。Prasad的答复令人惊讶："我仍然爱他们，因为他们在一家非常坚韧的公司里是顶尖的。我们愿意牺牲增长来换取稳健性。"这句话暴露了这套方法的核心哲学承诺：<strong>安全永远在增长之前</strong>。</p>
+
+
+<h3>论点四：间断平衡与细菌实验——耐心是竞争力</h3>
+
+<p>理查德·伦斯基自1988年起培养11瓶大肠杆菌，至今超过70,000代。所有11瓶在相同环境中进化——它们<strong>都</strong>适应了，但<strong>路径各不相同</strong>。其中一瓶在33,000代时发展出柠檬酸代谢——一个极为罕见但决定性的创新。</p>
+
+<p>投资启示：相同的选择压力→不同的适应路径。好方法不是预测具体路径，而是设计一套能在各种路径下生存获利的系统。间断平衡（Gould & Eldredge）：物种进化是长期稳定被短暂剧烈的变化打断——99%的时间什么都没发生，1%的时间决定了收益。Nalanda的应用：不去预测"间断"何时发生，确保当它发生时——<strong>资本还在，持仓还在</strong>。</p>
+
+<blockquote>
+<p>我们不知道间断什么时候来、以什么形式来。但我们知道自己要做的：确保当它来的时候，我们还在牌桌上。</p>
+</blockquote>
+
+<h3>论点五：信号 vs 噪音——障碍原理的启示</h3>
+
+<p>以色列生物学家Amotz Zahavi的<strong>障碍原理</strong>：一个信号要可靠，必须付出成本——发出者无法伪造。雄孔雀的尾巴就是典型：巨大、耗能、吸引捕食者，只有基因足够优秀的才能负担。</p>
+
+<table>
+<thead><tr><th>廉价信号（噪音）</th><th>昂贵信号（真实信号）</th></tr></thead>
+<tbody>
+<tr><td>"我们很有信心"</td><td>CEO大量个人增持</td></tr>
+<tr><td>"进入高增长市场"</td><td>公司剥离非核心业务</td></tr>
+<tr><td>"护城河很深"</td><td>连续10年ROCE>30%</td></tr>
+<tr><td>"有协同效应"</td><td>拒绝做并购（有纪律）</td></tr>
+<tr><td>"在创新"</td><td>现金多于债务，有能力犯小错</td></tr>
+</tbody>
+</table>
+
+<h3>论点六：不要懒惰——要非常懒惰</h3>
+
+<p><strong>达尔文雀</strong>：加拉帕戈斯的雀鸟花费很少能量找新食物，大部分时间在吃已经找到的东西。既然已经找到了，就不要天天换。</p>
+
+<p><strong>熊的冬眠</strong>：代谢率下降50-75%，心率降到9。极端的"不行动"让它活过严冬。</p>
+
+<p>三条卖出条件：<strong>1.</strong> 基本面发生永久性、根本性恶化（不是周期波动）；<strong>2.</strong> 股价极度荒谬地高估（极其罕见）；<strong>3.</strong> 发现了绝对更好的机会（几乎不发生）。</p>
+
+<blockquote>
+<p>Nalanda每年与持仓公司管理层见一面。除此之外什么都不做。35-40年的ROCE历史已经说明了一切——一年看一次就够了。</p>
+</blockquote>
+
+<hr>
+
+<h2>三、实操案例：Page Industries的演变</h2>
+
+<p>Page是Jockey品牌在印度的独家授权商。2008年底（雷曼兄弟破产后数日）被Nalanda买入。买入时它主要只销售男士内衣。此后每一步都是"计算风险"策略：</p>
+<ul>
+  <li><strong>2009-10</strong>：推出女装休闲装、男装运动装——利用现有渠道、品牌和供应链。</li>
+  <li><strong>2011-12</strong>：试水儿童系列——研发投入后市场反应冷淡，<strong>果断收场</strong>。但公司ROCE 59%、零债务，完全能承受损失。</li>
+  <li><strong>2015-16</strong>：吸取教训，只推7-12岁男孩系列。2017-18追加女孩线。</li>
+  <li><strong>2019-20</strong>：儿童系列终于在市场上取得成功，贡献增长。</li>
+  <li>整个过程：无收购、无多元化、无杠杆。连续推出Speedo授权、女式睡衣、国际店铺、数字化工厂。</li>
+</ul>
+<p>COVID-19期间，Page仍保持63%的ROCE和零债务。市场份额从2018年的66%增长至70%，同行在消失，它在变强。这个案例的关键在于：<strong>健壮性使公司可以犯小错而不用付出致命代价</strong>。儿童系列失败没有留下创伤，反而为后来的成功提供了经验。</p>
+
+<hr>
+
+<h2>四、批判性反思：这套方法的边界</h2>
+
+<div class="critique-section">
+<h3>这套框架的假设与局限</h3>
+
+<p><strong>假设：自然选择的谨慎性策略在投资领域同样最优。</strong></p>
+<p>这个假设在Nalanda的数据中得到了证明（20.3%年化，跑赢基准10.9个百分点）。但"证明"只发生在一种特定的市场环境——印度大型股市场。它在其他市场（美国、中国、欧洲）的有效性需要独立验证。</p>
+
+<p><strong>核心局限：</strong></p>
+<ol>
+  <li><strong>样本偏差</strong>——Prasad管理50亿美元，专注印度大型股。他的选择集和小投资者完全不同。Nalanda不会去看市值低于2亿美元的股票。</li>
+  <li><strong>ROCE的向后看问题</strong>——会系统性遗漏亚马逊、Netflix、腾讯这类在早期没有高ROCE的超级明星。小投资者是否承受得起这种遗漏？</li>
+  <li><strong>印度特殊性</strong>——印度市场的家族企业治理问题突出（导致回避策略有效），在治理更好的市场，这套回避策略可能需要修正。</p>
+
+<p><strong>对读者的建议·小投资者版本</strong>：如果你管理的不是50亿美元而是5万美元，你可以容忍更高的II类错误——因为你的机会成本是更低的。Nalanda必须非常谨慎地选择标的因为每一个错误都会显著影响组合。但你的一个错误可能只占组合的5-10%。你可以——也许应该——在Prasad框架的基础上增加一个"小赌注"池：用10-20%的资金投资于还没有达到20% ROCE但是有可靠逻辑支撑的年轻公司。这不是反对Prasad——这是在理解了他的原则之后对其应用条件的本地化调试。</p></li>
+  <li><strong>"永久持有"是否是策略</strong>——不做退出决策也是在决策。极端高估时不卖可能导致10-15年零回报。</li>
+  <li><strong>认知成本</strong>——这套框架读起来简单（三步），做起来极难。在巨大的市场噪音中做到"不行动"，需要的不是知识，而是性格。</li>
+</ol>
+
+<p><strong>作者可能会修改什么：</strong></p>
+<p>加一个宏观估值约束（如CAPE>35时调整节奏）；对"永久持有"制定更细致的退出规则；区分10年高ROCE和3年高ROCE的不同意义；增加企业生命周期的讨论——识别巅峰期和衰落期的信号。</p>
+</div>
+
+<hr>
+
+<footer>
+  <p class="disclaimer">说的大多都是错的</p>
+  <p>吃书笔记 · 独立买方视角 · 不构成任何建议</p>
+  <p><strong>向读者致歉：</strong>本书原文字数远超此笔记所能概括。进化生物学的厚度——Lenski的70,000代细菌实验、木村资生的中性理论、海胆发育的胚胎学细节——无法在此展开。建议对书中生物学案例感兴趣的读者阅读原书。</p>
+  <div class="reading-list">
+    <h4>延伸阅读</h4>
+    <p><strong>1. 查理·芒格《穷查理宝典》</strong> — Prasad的灵感来源之一。跨学科思维的最佳示范。</p>
+    <p><strong>2. 理查德·道金斯《自私的基因》</strong> — "改变Prasad人生的书"（原话）。进化论入门经典。</p>
+    <p><strong>3. 丹尼尔·卡尼曼《思考，快与慢》</strong> — 第23章"外部视角"是所有投资者的必修课。</p>
+    <p><strong>4. 斯蒂芬·杰伊·古尔德《奇妙的生命》</strong> — "重放生命磁带"假说的提出者，间断平衡理论共同创造者。</p>
+    <p><strong>5. 本杰明·格雷厄姆《聪明的投资者》</strong> — 安全边际概念的源头。Prasad的整本书可以说是格雷厄姆第20章的现代进化版。</p>
+  </div>
+</footer>
+
+</body>
+</html>

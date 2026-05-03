@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>私人书库</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ========================================
+   私人书库 · Paper & Ink 设计系统
+   温暖纸质感 + 衬线体排版
+   ======================================== */
+:root {
+  --bg: #fbf9f2;
+  --bg-soft: #f3efe4;
+  --surface: #fdfcf8;
+  --surface-2: #f5f2e8;
+  --border: rgba(92,83,68,.10);
+  --border-strong: rgba(92,83,68,.18);
+  --text-1: #1c1814;
+  --text-2: #5c5344;
+  --text-3: #8a7e6c;
+  --accent: #b4513a;
+  --accent-2: #2c5f7c;
+  --good: #3a6b45;
+  --warn: #a67c2e;
+
+  --font-serif: 'Noto Serif SC', 'Source Serif 4', Georgia, serif;
+  --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+  --max-width: 720px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-serif);
+  background: var(--bg);
+  color: var(--text-1);
+  line-height: 1.75;
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding: 90px 0 56px;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+  margin: 40px auto 0;
+  opacity: 0.35;
+}
+
+.hero-brand {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-1);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.hero .tagline {
+  font-size: 1.15rem;
+  color: var(--text-2);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.hero .subtitle {
+  font-size: 0.95rem;
+  color: var(--text-3);
+  margin-bottom: 28px;
+}
+
+.hero .disclaimer {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--text-3);
+  font-style: italic;
+  padding: 6px 16px;
+  background: var(--surface-2);
+  border-radius: 20px;
+}
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-3);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ===== FILTER NAV ===== */
+.filter-nav {
+  margin-bottom: 40px;
+}
+
+.filter-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.filter-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.filter-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.filter-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-tag {
+  font-family: var(--font-sans);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  background: var(--surface);
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  user-select: none;
+  position: relative;
+}
+
+.filter-tag:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+}
+
+.filter-tag.active {
+  background: var(--text-1);
+  color: var(--bg);
+  border-color: var(--text-1);
+}
+
+.filter-tag .count {
+  font-size: 10px;
+  margin-left: 4px;
+  opacity: 0.6;
+}
+
+/* ===== BOOK LIST ===== */
+.book-list {
+  padding-bottom: 80px;
+}
+
+.book-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  transition: padding-left 0.25s ease, background 0.25s ease;
+  border-radius: 0;
+  position: relative;
+}
+
+.book-item:hover {
+  padding-left: 12px;
+}
+
+.book-item:last-child {
+  border-bottom: none;
+}
+
+.book-item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.book-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-3);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.book-cats {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.book-cat {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: var(--bg-soft);
+  color: var(--text-3);
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+.book-link {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-decoration: none;
+  color: inherit;
+  gap: 16px;
+}
+
+.book-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.book-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-1);
+  margin-bottom: 8px;
+  transition: color 0.2s;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+.book-link:hover .book-title {
+  color: var(--accent);
+}
+
+.book-summary {
+  font-size: 0.9rem;
+  color: var(--text-2);
+  line-height: 1.65;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.book-arrow {
+  font-size: 1.1rem;
+  color: var(--text-3);
+  flex-shrink: 0;
+  margin-top: 6px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.book-link:hover .book-arrow {
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 80px 0;
+  display: none;
+}
+
+.empty-state.visible {
+  display: block;
+}
+
+.empty-state-text {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--text-3);
+}
+
+.empty-state-sub {
+  font-family: var(--font-sans);
+  font-size: 0.85em;
+  color: var(--text-3);
+  opacity: 0.6;
+  margin-top: 8px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 48px 0 80px;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--text-3);
+  border-top: 1px solid var(--border);
+}
+
+.footer p {
+  margin-bottom: 6px;
+}
+
+.footer .motto {
+  font-style: italic;
+  color: var(--text-3);
+  opacity: 0.7;
+}
+
+/* ===== SCROLL REVEAL ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.book-item {
+  animation: fadeInUp 0.4s ease both;
+}
+.book-item:nth-child(1) { animation-delay: 0.05s; }
+.book-item:nth-child(2) { animation-delay: 0.10s; }
+.book-item:nth-child(3) { animation-delay: 0.15s; }
+.book-item:nth-child(4) { animation-delay: 0.20s; }
+.book-item:nth-child(5) { animation-delay: 0.25s; }
+.book-item:nth-child(6) { animation-delay: 0.30s; }
+.book-item:nth-child(7) { animation-delay: 0.35s; }
+.book-item:nth-child(8) { animation-delay: 0.40s; }
+.book-item:nth-child(9) { animation-delay: 0.45s; }
+.book-item:nth-child(10){ animation-delay: 0.50s; }
+.book-item:nth-child(11){ animation-delay: 0.55s; }
+.book-item:nth-child(10){ animation-delay: 0.50s; }
+.book-item:nth-child(11){ animation-delay: 0.55s; }
+.book-item:nth-child(12){ animation-delay: 0.60s; }
+.book-item:nth-child(13){ animation-delay: 0.65s; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .hero {
+    padding: 56px 0 40px;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  .stats-bar {
+    gap: 24px;
+    padding: 24px 0;
+  }
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  .book-title {
+    font-size: 1.05rem;
+  }
+  .book-item {
+    padding: 22px 0;
+  }
+  .book-item:hover {
+    padding-left: 6px;
+  }
+}
+
+/* ===== PRINT ===== */
+@media print {
+  .filter-nav, .stats-bar, .hero::after { display: none; }
+  .book-item { break-inside: avoid; animation: none; }
+  .book-item:hover { padding-left: 0; }
+  body { font-size: 12pt; background: #fff; }
+}
+
+::selection {
+  background: rgba(180,81,58,.12);
+  color: var(--text-1);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-brand">私人书库</div>
+    <h1>私人书库</h1>
+    <div class="tagline">把好书吃透，把认知留下</div>
+    <div class="subtitle">围绕核心命题递进论证，不是章节摘要</div>
+    <div class="disclaimer">个人读书笔记，可能存在理解偏差，仅供参考</div>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number" id="totalCount">10</div>
+      <div class="stat-label">已阅读</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number" id="categoryCount">4</div>
+      <div class="stat-label">领域覆盖</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number" id="latestMonth">05</div>
+      <div class="stat-label">最新 · 月</div>
+    </div>
+  </div>
+
+  <!-- FILTER -->
+  <nav class="filter-nav">
+    <div class="filter-header">
+      <span class="filter-label">按领域筛选</span>
+      <span class="filter-count" id="filterCount">显示 10 篇</span>
+    </div>
+    <div class="filter-tags" id="filterTags">
+      <span class="filter-tag active" data-filter="all">全部<span class="count">10</span></span>
+      <span class="filter-tag" data-filter="投资方法">投资方法<span class="count">3</span></span>
+      <span class="filter-tag" data-filter="金融哲学">金融哲学<span class="count">3</span></span>
+      <span class="filter-tag" data-filter="心理学">心理学<span class="count">5</span></span>
+      <span class="filter-tag" data-filter="神话学">神话学<span class="count">1</span></span>
+    </div>
+  </nav>
+
+  <!-- BOOK LIST -->
+  <main class="book-list" id="bookList">
+
+    <!-- ★ 新书插入标记位：在此行之后插入，保持日期倒序 ★ -->
+
+    <!-- 情感机器 -->
+    <article class="book-item" data-cats="心理学 人工智能 认知科学" data-date="2026-05-03">
+      <div class="book-item-header">
+        <span class="book-date">2026-05-03</span>
+        <div class="book-cats">
+          <span class="book-cat">心理学</span>
+          <span class="book-cat">人工智能</span>
+          <span class="book-cat">认知科学</span>
+        </div>
+      </div>
+      <a href="books/情感机器.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">情感机器</div>
+          <div class="book-summary">明斯基用计算机科学家的视角，提出了一个颠覆性的框架：情感不是理性的敌人，而是大脑切换不同"资源集"的信号机制。批评家-选择器模型、精神活动六层级、意识手提箱——这些概念至今仍然是理解人类智能和构建通用AI最锐利的分析工具之一。读这本书不是为了找答案，而是为了学习如何正确地提问。</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- 达尔文的危险思想 -->
+    <article class="book-item" data-cats="心理学 演化哲学 科学哲学" data-date="2026-05-02">
+      <div class="book-item-header">
+        <span class="book-date">2026-05-02</span>
+        <div class="book-cats">
+          <span class="book-cat">心理学</span>
+          <span class="book-cat">演化哲学</span>
+          <span class="book-cat">科学哲学</span>
+        </div>
+      </div>
+      <a href="books/达尔文的危险思想.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">达尔文的危险思想</div>
+          <div class="book-summary">达尔文的核心思想是一瓶"万能酸"——自然选择这个算法过程能在没有设计者的情况下产生复杂设计，并由此腐蚀一切关于设计、心灵、意义和道德的传统观念。丹尼特的论证展示了达尔文式思维如何彻底重构我们对整个世界的理解框架。</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- 经验的疆界 -->
+    <article class="book-item" data-cats="心理学 组织行为学 决策科学" data-date="2026-05-02">
+      <div class="book-item-header">
+        <span class="book-date">2026-05-02</span>
+        <div class="book-cats">
+          <span class="book-cat">心理学</span>
+          <span class="book-cat">组织行为学</span>
+          <span class="book-cat">决策科学</span>
+        </div>
+      </div>
+      <a href="books/经验的疆界.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">经验的疆界</div>
+          <div class="book-summary">经验是深刻矛盾的老师。组织拼命从经验中学习，但经验本身的结构——其复杂性、随机性、内生性和抽样偏差——注定了它作为向导的局限。马奇论证：这些陷阱不全是人类认知缺陷造成的，而是经验本身的性质所致。</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- 千面英雄 -->
+    <article class="book-item" data-cats="神话学" data-date="2026-05-02">
+      <div class="book-item-header">
+        <span class="book-date">2026-05-02</span>
+        <div class="book-cats">
+          <span class="book-cat">神话学</span>
+          <span class="book-cat">比较宗教学</span>
+          <span class="book-cat">深度心理学</span>
+        </div>
+      </div>
+      <a href="books/千面英雄.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">千面英雄</div>
+          <div class="book-summary">约瑟夫·坎贝尔用一把钥匙打开全世界神话大门——揭示所有英雄故事背后的统一结构"单一神话"（monomyth）。启程→启蒙→归来，乔治·卢卡斯按此结构写了《星球大战》。不是轻松的神话故事集，而是一本融合深度心理学、比较宗教学和文学批评的严肃理论著作。</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- 时间游戏 -->
+    <article class="book-item" data-cats="金融哲学" data-date="2026-04-28">
+      <div class="book-item-header">
+        <span class="book-date">2026-04-28</span>
+        <div class="book-cats">
+          <span class="book-cat">金融哲学</span>
+          <span class="book-cat">人类学</span>
+          <span class="book-cat">社会学</span>
+        </div>
+      </div>
+      <a href="books/时间游戏.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">时间游戏</div>
+          <div class="book-summary">"时间是身边风险和远方机会的组合"——周洛华以此核心命题拆解金融学中物理时间概念的迷思，将金融活动重新嵌入人类学与社会学的进化框架。不教赚钱，但可能改变你看待时间、风险和机会的底层视角。</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- 货币起源 -->
+    <article class="book-item" data-cats="金融哲学" data-date="2026-04-28">
+      <div class="book-item-header">
+        <span class="book-date">2026-04-28</span>
+        <div class="book-cats">
+          <span class="book-cat">金融哲学</span>
+          <span class="book-cat">进化人类学</span>
+          <span class="book-cat">货币理论</span>
+        </div>
+      </div>
+      <a href="books/货币起源.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">货币起源</div>
+          <div class="book-summary">货币不是交易的媒介，而是人类道德体系的"补丁程序"。周洛华用进化人类学重新定义货币本质——从物物交换的神话中解放出来，看到货币作为社会协作工具的深层逻辑。全书无一个公式，却比任何货币经济学教材都更接近真相。</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- 市场本质 -->
+    <article class="book-item" data-cats="金融哲学" data-date="2026-04-28">
+      <div class="book-item-header">
+        <span class="book-date">2026-04-28</span>
+        <div class="book-cats">
+          <span class="book-cat">金融哲学</span>
+          <span class="book-cat">人类学</span>
+          <span class="book-cat">制度经济学</span>
+        </div>
+      </div>
+      <a href="books/市场本质.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">市场本质</div>
+          <div class="book-summary">市场不是资源配置机制，不是供求关系的产物——市场是自由人的联合，是灵长类动物3000万年进化史中个体追求自由与地位的本能在人类社会中的制度投射。周洛华用人类学彻底解构主流经济学对市场的理解，足以让每一个受过正统经济学训练的人坐立不安。</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- 心态制胜 -->
+    <article class="book-item" data-cats="心理学 投资方法" data-date="2026-04-27">
+      <div class="book-item-header">
+        <span class="book-date">2026-04-27</span>
+        <div class="book-cats">
+          <span class="book-cat">心理学</span>
+          <span class="book-cat">投资方法</span>
+          <span class="book-cat">运动心理学</span>
+        </div>
+      </div>
+      <a href="books/心态制胜.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">心态制胜</div>
+          <div class="book-summary">Timothy Gallwey 的奠基之作——解决的不是"技能不够"而是"技能足够但无法正常发挥"的问题。提供绕过意志力、直接重建神经通路的方法。核心价值在于帮你理解为什么你做不到你本该能做到的。最适合高压决策者、交易员和需要在公众面前稳定表现的专业人士。</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- 估值原理 -->
+    <article class="book-item" data-cats="投资方法" data-date="2026-04-26">
+      <div class="book-item-header">
+        <span class="book-date">2026-04-26</span>
+        <div class="book-cats">
+          <span class="book-cat">投资方法</span>
+          <span class="book-cat">估值模型</span>
+          <span class="book-cat">基本面分析</span>
+        </div>
+      </div>
+      <a href="books/估值原理.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">估值原理</div>
+          <div class="book-summary">估值的本质是预测企业未来现金流并折现到现在——DCF、DDM、相对估值法都是这一思想的变体。投资的终极目标是找到市场价格低于内在价值的资产。系统讲解定价、估值与投资逻辑，推荐指数 9.0/10。</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- 达尔文投资 -->
+    <article class="book-item" data-cats="投资方法 心理学" data-date="2026-05-02">
+      <div class="book-item-header">
+        <span class="book-date">2026-05-02</span>
+        <div class="book-cats">
+          <span class="book-cat">投资方法</span>
+          <span class="book-cat">进化生物学</span>
+          <span class="book-cat">价值投资</span>
+        </div>
+      </div>
+      <a href="books/达尔文投资.html" class="book-link">
+        <div class="book-content">
+          <div class="book-title">我从达尔文那里学到的投资知识</div>
+          <div class="book-summary">Pulak Prasad 用进化生物学透镜审视价值投资的每一块基石。Nalanda 三步法：避免大风险→公平价格买高质量企业→非常懒惰地持有。成立至今年化 20.3%，跑赢印度 Sensex 指数 10.9 个百分点。"巴菲特是最好的投资者，因为他是最好的拒绝者。"</div>
+        </div>
+        <span class="book-arrow">→</span>
+      </a>
+    </article>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState">
+      <div class="empty-state-text">没有找到匹配的读书笔记</div>
+      <div class="empty-state-sub">试试切换其他筛选条件</div>
+    </div>
+
+  </main>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>私人书库 · 独立买方视角 · 不构成任何建议</p>
+    <p class="motto">说的大多都是错的</p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  const filterTags = document.getElementById('filterTags');
+  const bookItems = document.querySelectorAll('.book-item');
+  const emptyState = document.getElementById('emptyState');
+  const filterCount = document.getElementById('filterCount');
+
+  function updateCount(visible) {
+    filterCount.textContent = '显示 ' + visible + ' 篇';
+  }
+
+  filterTags.addEventListener('click', function(e) {
+    const tag = e.target.closest('.filter-tag');
+    if (!tag) return;
+
+    filterTags.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+    tag.classList.add('active');
+
+    const filter = tag.dataset.filter;
+    let visibleCount = 0;
+
+    bookItems.forEach(function(item) {
+      if (filter === 'all') {
+        item.style.display = '';
+        visibleCount++;
+      } else {
+        var cats = item.dataset.cats || '';
+        if (cats.indexOf(filter) !== -1) {
+          item.style.display = '';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+        }
+      }
+    });
+
+    updateCount(visibleCount);
+    emptyState.classList.toggle('visible', visibleCount === 0);
+  });
+})();
+</script>
+
+</body>
+</html>
